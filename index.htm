@@ -10,9 +10,17 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<meta name="description" content="遇见你，真美好">
+		<!--修改诗词字体-->
+		<style> 
+			#poem_info { font-size:14px;
+				         font-style:oblique
+			} 
+		</style> 
 		<link rel="stylesheet" href="assets/css/main.css">
                                 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+
+
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -22,9 +30,22 @@
 					<section id="main">
 						<header>
 							<span class="avatar"><img width="122px" src="images/logo.jpg" alt=""></span>
-							<h1></h1>
-							<p>欲买桂花同载酒<br>终不似，少年游</p>
+							<!--<p>欲买桂花同载酒<br>终不似，少年游</p>-->
+							<!--今日诗词API-->
+							<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+							<div id="poem_sentence"></div>
+							<div id="poem_info"></div>
+							<script type="text/javascript">
+  								jinrishici.load(function(result) {
+								var sentence = document.querySelector("#poem_sentence")
+								var info = document.querySelector("#poem_info")
+								sentence.innerHTML = result.data.content
+								info.innerHTML =  result.data.origin.author + ' - 《' + result.data.origin.title + '》 '
+								
+  							});
+						</script>
 						</header>
+
 						<footer>
 							<ul class="icons">
 								<a title="孤独な小説家の舔狗日记" href="https://dog.cuddly.one"><i class="fas fa-paw  fa-3x"></i></a>&nbsp;&nbsp;
@@ -34,12 +55,12 @@
 						</footer>
 					</section>
 
-					<div style="max-width:70%;margin-top:15px;">
-						<span class="quote-content" style="color: white;cursor: default;"></span>
-						<span class="quote-author" style="cursor: default;float: right; color: white"></span>					</div>
+				
 
 				<!-- Footer -->
 					<footer id="footer">
+						
+
 						<ul class="copyright">
 							<li>Copyright &copy;2021   LonelyNovelist</li>
 						</ul>
